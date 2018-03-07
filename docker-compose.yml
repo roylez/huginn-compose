@@ -1,0 +1,31 @@
+version: "2.1"
+
+services:
+  huginn:
+    image: huginn/huginn
+    restart: always
+    environment:
+      DO_NOT_SEED: 1
+      DATABASE_ADAPTER: postgresql
+      DATABASE_HOST: db
+      DATABASE_PORT: 5432
+      DATABASE_URL: postgres://postgres:d3d529137c5e9ca341299fd30294e558@db:5432/huginn
+    env_file: huginn.env
+  db:
+    image: postgres:9.5-alpine
+    restart: always
+    volumes:
+      - /db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: d3d529137c5e9ca341299fd30294e558
+  https:
+    image: steveltn/https-portal
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    links:
+      - huginn
+    environment:
+      DOMAINS: "huginn.roylez.info -> http://huginn:3000"
+      STAGE:   "production"
