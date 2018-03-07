@@ -18,6 +18,7 @@ services:
       - /db:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: d3d529137c5e9ca341299fd30294e558
+      POSTGRES_DB:       huginn
   https:
     image: steveltn/https-portal
     restart: always
