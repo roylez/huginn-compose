@@ -1,4 +1,4 @@
-version: "2.1"
+version: "3"
 
 services:
   huginn:
@@ -6,11 +6,15 @@ services:
     restart: always
     environment:
       DO_NOT_SEED:  1
+      DATABASE_ADAPTER: postgresql
+      DATABASE_HOST: db
+      DATABASE_PORT: 5432
       DATABASE_URL: postgres://postgres:d3d529137c5e9ca341299fd30294e558@db:5432/huginn
     env_file: huginn.env
     labels:
       - "traefik.backend=huginn"
       - "traefik.frontend.rule=Host:${HUGINN_DOMAIN}"
+      - "traefik.port=3000"
   db:
     image: postgres:9.5-alpine
     restart: always
@@ -20,6 +24,8 @@ services:
     environment:
       POSTGRES_PASSWORD: d3d529137c5e9ca341299fd30294e558
       POSTGRES_DB:       huginn
+    labels:
+      - "traefik.enable=false"
   https:
     image: traefik
     restart: always
@@ -31,3 +37,5 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - $PWD/traefik.toml:/traefik.toml
       - $PWD/acme.json:/acme.json
+    labels:
+      - "traefik.enable=false"

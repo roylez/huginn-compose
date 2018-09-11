@@ -1,3 +1,4 @@
 *.env
 .tags
 backup
+acme.json

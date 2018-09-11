@@ -10,7 +10,7 @@ defaultEntryPoints = ["http", "https"]
     [entryPoints.https.tls]
 
 [acme]
-email = "admin@cloaked.me"
+email = "me@roylez.info"
 storage = "acme.json"
 entryPoint = "https"
 onDemand = false
