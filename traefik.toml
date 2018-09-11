@@ -1,0 +1,20 @@
+defaultEntryPoints = ["http", "https"]
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+    [entryPoints.http.redirect]
+      entryPoint = "https"
+  [entryPoints.https]
+  address = ":443"
+    [entryPoints.https.tls]
+
+[acme]
+email = "admin@cloaked.me"
+storage = "acme.json"
+entryPoint = "https"
+onDemand = false
+OnHostRule = true
+acmeLogging = true
+  [acme.httpChallenge]
+  entryPoint = "http"
