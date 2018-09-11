@@ -8,7 +8,7 @@ services:
       DO_NOT_SEED:  1
       DATABASE_URL: postgres://postgres:d3d529137c5e9ca341299fd30294e558@db:5432/huginn
     env_file: huginn.env
-		labels:
+    labels:
       - "traefik.backend=huginn"
       - "traefik.frontend.rule=Host:${HUGINN_DOMAIN}"
   db:
