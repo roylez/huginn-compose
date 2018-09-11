@@ -5,7 +5,7 @@
 #
 # to restore:
 #   gunzip XXX.db.gz
-#   docker-compose exec db pg_restore -Fc -C -d huginn /backup/XXX.db
+#   docker-compose exec db pg_restore -U postgres -Fc -d huginn /backup/2018-04-29.db
 
 YMD=$(date "+%Y-%m-%d")
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"

@@ -29,5 +29,5 @@ services:
     links:
       - huginn
     environment:
-      DOMAINS: "huginn.roylez.info -> http://huginn:3000"
+      DOMAINS: "${HUGINN_DOMAIN} -> http://huginn:3000"
       STAGE:   "production"
