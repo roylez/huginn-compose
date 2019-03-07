@@ -1,0 +1,6 @@
+huginn.roylez.info {
+  proxy / huginn:3000 {
+    transparent
+  }
+  gzip
+}
