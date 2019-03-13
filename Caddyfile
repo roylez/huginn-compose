@@ -3,4 +3,6 @@ huginn.roylez.info {
     transparent
   }
   gzip
+  push
+  cache
 }
