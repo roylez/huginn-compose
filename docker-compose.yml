@@ -7,6 +7,8 @@ services:
     environment:
       DO_NOT_SEED:  1
       DATABASE_ADAPTER: postgresql
+      DATABASE_HOST: db
+      DATABASE_PORT: 5432
       DATABASE_URL: postgres://postgres:d3d529137c5e9ca341299fd30294e558@db:5432/huginn
     env_file: huginn.env
   db:
@@ -21,8 +23,6 @@ services:
   caddy:
     image: abiosoft/caddy
     restart: always
-    depends_on:
-      - huginn
     ports:
       - 80:80
       - 443:443
