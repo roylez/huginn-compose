@@ -12,7 +12,7 @@ services:
       DATABASE_URL: postgres://postgres:d3d529137c5e9ca341299fd30294e558@db:5432/huginn
     env_file: huginn.env
   db:
-    image: postgres:9.5-alpine
+    image: postgres:12-alpine
     restart: always
     volumes:
       - /db:/var/lib/postgresql/data
