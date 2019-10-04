@@ -13,7 +13,7 @@ default: backup clean
 backup:
 	# make a new backup
 	@mkdir -p ./backup
-	docker-compose exec db pg_dump -U postgres -Fp -c -d ${db} | bzip2 > ${backup_file}.bz2
+	docker-compose exec db pg_dump -U postgres -Fp -d ${db} | gzip > ${backup_file}.gz
 
 # override day in command line to change backup file
 # 	make restore day=2019-07-03
@@ -21,7 +21,7 @@ backup:
 restore:
 	# restore backup
 	$(eval container_id := $(shell docker-compose ps -q db) )
-	bzcat ${backup_file}.bz2 | docker exec -i ${container_id} psql -U postgres
+	zcat ${backup_file}.gz | docker exec -i ${container_id} psql -U postgres
 
 .PHONY: clean
 clean:
