@@ -26,4 +26,4 @@ restore:
 .PHONY: clean
 clean:
 	# delete backups older than 30 days
-	find ${LOCAL_BACKUP_DIR} -type f -mtime +30 -name "*.db" -delete
+	find ${LOCAL_BACKUP_DIR} -type f -mtime +30 -delete
