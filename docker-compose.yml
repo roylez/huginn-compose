@@ -16,7 +16,6 @@ services:
     restart: always
     volumes:
       - /db:/var/lib/postgresql/data
-      - ./backup:/backup
     environment:
       POSTGRES_PASSWORD: d3d529137c5e9ca341299fd30294e558
       POSTGRES_DB:       huginn
