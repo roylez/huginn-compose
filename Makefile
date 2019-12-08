@@ -13,7 +13,7 @@ default: backup clean
 backup:
 	# make a new backup
 	@mkdir -p ./backup
-	docker-compose exec db pg_dump -U postgres -Fp -d ${db} | gzip > ${backup_file}.gz
+	docker-compose exec -T db pg_dump -U postgres -Fp -d ${db} | gzip > ${backup_file}.gz
 
 # override day in command line to change backup file
 # 	make restore day=2019-07-03
