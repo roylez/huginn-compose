@@ -5,6 +5,7 @@ LOCAL_BACKUP_DIR = ./backup
 backup_file := ${LOCAL_BACKUP_DIR}/${day}.sql
 
 export COMPOSE_INTERACTIVE_NO_CLI=1
+export PATH := /usr/local/bin:${PATH}
 
 .PHONY: default
 default: backup clean
