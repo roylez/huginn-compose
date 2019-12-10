@@ -22,7 +22,7 @@ backup:
 restore:
 	# restore backup
 	$(eval container_id := $(shell docker-compose ps -q db) )
-	zcat ${backup_file}.gz | docker exec -i ${container_id} psql -U postgres
+	zcat ${backup_file}.gz | docker exec -i ${container_id} psql -U postgres -d ${db}
 
 .PHONY: clean
 clean:
